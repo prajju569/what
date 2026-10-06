@@ -1,0 +1,259 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>The Door to Heaven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@1,500&family=Figtree:wght@400;600;700&display=swap">
+<style>
+/* Layout: one phone column under a night sky; a carved gold door is the hero and returns at the end to swing open. Single dark look by choice. */
+:root {
+  --night: #0b0a1f;
+  --night-2: #1b1640;
+  --gold: #e6c06a;
+  --gold-deep: #a9802e;
+  --glow: #fff3cf;
+  --ink: #f5f1ff;
+  --muted: #b7b0d6;
+  --line: rgba(230,192,106,.35);
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --script: "Cormorant Garamond", Georgia, serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  background: var(--night);
+  background-image: radial-gradient(120% 70% at 50% 0%, var(--night-2) 0%, transparent 70%);
+  color: var(--ink); font: 16px/1.5 var(--body);
+  padding-inline: 16px; overflow-x: hidden;
+}
+#sky, #fx { position: fixed; inset: 0; pointer-events: none; }
+#sky { z-index: 0; } #fx { z-index: 9; }
+.wrap { position: relative; z-index: 1; max-width: 440px; margin: 0 auto; padding-block: 28px 120px; display: flex; flex-direction: column; gap: 22px; }
+
+.eyebrow { font: 700 12px/1.2 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+h1, h2 { font-family: var(--display); font-weight: 700; margin: 0; line-height: 1.1; text-wrap: balance; letter-spacing: .02em; }
+h1 { font-size: clamp(30px, 9vw, 40px); }
+h2 { font-size: clamp(24px, 7vw, 30px); }
+p { margin: 0; color: var(--muted); }
+.lead { color: var(--ink); font-size: 17px; }
+.script { font: italic 500 22px/1.35 var(--script); color: var(--glow); }
+
+.screen { display: flex; flex-direction: column; gap: 18px; animation: rise .7s ease both; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.center { text-align: center; align-items: center; }
+
+button, .btn {
+  font: 700 16px/1 var(--body); letter-spacing: .04em; border: 0; cursor: pointer; text-decoration: none; text-align: center;
+  padding: 16px 24px; border-radius: 999px; background: linear-gradient(180deg, #f3d68e, var(--gold)); color: var(--night);
+  box-shadow: 0 0 24px rgba(230,192,106,.35), 0 5px 0 var(--gold-deep); transition: transform .1s, box-shadow .1s; display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+}
+button:active, .btn:active { transform: translateY(3px); box-shadow: 0 0 18px rgba(230,192,106,.3), 0 2px 0 var(--gold-deep); }
+button:focus-visible, .btn:focus-visible { outline: 3px solid var(--glow); outline-offset: 3px; }
+button.ghost { background: transparent; color: var(--gold); box-shadow: inset 0 0 0 1.5px var(--line); }
+.row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+/* ---- the door ---- */
+.gate { position: relative; width: min(62vw, 250px); aspect-ratio: 3 / 4.2; margin: 6px auto 0; perspective: 1100px; }
+.gate .light { position: absolute; inset: 0; border-radius: 50% 50% 4px 4px / 34% 34% 4px 4px;
+  background: radial-gradient(60% 55% at 50% 55%, #fff 0%, var(--glow) 35%, var(--gold) 70%, #6b4c14 100%); }
+.gate .frame { position: absolute; inset: -12px; border-radius: 50% 50% 6px 6px / 34% 34% 6px 6px;
+  border: 6px solid var(--gold); box-shadow: 0 0 40px rgba(230,192,106,.35), inset 0 0 0 3px var(--night), inset 0 0 0 5px var(--gold-deep); pointer-events: none; }
+.gate .leaves { position: absolute; inset: 0; border-radius: 50% 50% 4px 4px / 34% 34% 4px 4px; overflow: hidden; display: flex; transform-style: preserve-3d; }
+.leaf { flex: 1; position: relative; background:
+    linear-gradient(90deg, rgba(0,0,0,.25), transparent 30%, transparent 70%, rgba(0,0,0,.25)),
+    linear-gradient(180deg, #3a2a6e, #231a4d);
+  transition: transform 1.8s cubic-bezier(.6,.05,.2,1); backface-visibility: hidden; }
+.leaf.l { transform-origin: left center; border-right: 1px solid var(--gold-deep); }
+.leaf.r { transform-origin: right center; border-left: 1px solid var(--gold-deep); }
+.leaf::before, .leaf::after { content: ""; position: absolute; left: 16%; right: 16%; border: 2px solid var(--line); border-radius: 3px; }
+.leaf::before { top: 22%; height: 30%; border-radius: 60px 60px 3px 3px; }
+.leaf::after { top: 60%; height: 28%; }
+.gate.open .leaf.l { transform: rotateY(-108deg); }
+.gate.open .leaf.r { transform: rotateY(108deg); }
+.lockbtn { position: absolute; left: 50%; top: 50%; translate: -50% -50%; z-index: 2; width: 74px; height: 74px; padding: 0; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fbe7b0, var(--gold) 55%, var(--gold-deep)); box-shadow: 0 0 0 4px var(--night), 0 0 0 6px var(--gold), 0 0 30px var(--gold);
+  display: grid; place-items: center; animation: pulse 2.4s ease-in-out infinite; transition: opacity .6s, scale .6s; }
+.lockbtn svg { width: 26px; height: 34px; }
+@keyframes pulse { 50% { box-shadow: 0 0 0 4px var(--night), 0 0 0 6px var(--gold), 0 0 55px var(--glow); } }
+.gate.open .lockbtn { opacity: 0; scale: .4; pointer-events: none; }
+.inscr { font: 500 11px/1 var(--display); letter-spacing: .3em; color: var(--gold); text-align: center; text-transform: uppercase; }
+
+/* ---- 1 + 1 ---- */
+.quiz { display: flex; flex-direction: column; gap: 14px; align-items: center; align-self: stretch; }
+.sum { font: 700 clamp(44px, 14vw, 60px)/1 var(--display); color: var(--glow); text-shadow: 0 0 24px rgba(230,192,106,.5); }
+.answers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%; max-width: 320px; }
+.ans { padding: 18px 0; font: 700 24px/1 var(--display); background: rgba(255,255,255,.06); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
+.ans:active { transform: scale(.95); box-shadow: inset 0 0 0 1.5px var(--gold); }
+.ans.shake { animation: shake .4s; }
+@keyframes shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+.hint { min-height: 22px; color: var(--gold); font-weight: 600; }
+
+/* ---- reveal ---- */
+.reveal { display: flex; flex-direction: column; gap: 16px; }
+.reveal > * { animation: rise .8s ease both; }
+.big { font: 700 clamp(34px, 11vw, 48px)/1.05 var(--display); color: var(--glow); text-shadow: 0 0 24px rgba(230,192,106,.6); text-wrap: balance; }
+.ask { position: relative; min-height: 140px; align-self: stretch; }
+.ask button { white-space: nowrap; }
+#noBtn { position: absolute; transition: left .25s, top .25s, scale .25s; background: transparent; color: var(--muted); box-shadow: inset 0 0 0 1.5px rgba(183,176,214,.4); }
+@media (prefers-reduced-motion: reduce) { .screen, .reveal > * { animation: none; } .leaf { transition-duration: .01s; } .lockbtn { animation: none; } }
+</style>
+
+<canvas id="sky"></canvas>
+<canvas id="fx"></canvas>
+<div class="wrap">
+  <main id="app"></main>
+</div>
+
+<script>
+// ===== Edit these two lines =====
+const HER_NAME = "";        // e.g. "Ananya". Empty shows "you".
+const MY_WHATSAPP = "";     // your number with country code, digits only, e.g. "919876543210". Empty lets her pick the chat.
+const FROM = "Prajwal";
+// =================================
+
+const app = document.getElementById("app");
+const name = HER_NAME || "you";
+const buzz = p => { try { navigator.vibrate && navigator.vibrate(p); } catch (e) {} };
+
+const LOCK_SVG = `<svg viewBox="0 0 26 34" aria-hidden="true"><circle cx="13" cy="11" r="7" fill="#0b0a1f"/><path d="M9 15h8l3 17H6z" fill="#0b0a1f"/></svg>`;
+const door = () => `<div class="gate" id="gate">
+  <div class="light"></div>
+  <div class="leaves"><div class="leaf l"></div><div class="leaf r"></div></div>
+  <div class="frame"></div>
+  <div class="lockbtn" aria-hidden="true">${LOCK_SVG}</div>
+</div>`;
+
+// ---------- The door: 1 + 1 = ? ----------
+function intro() {
+  app.innerHTML = `<section class="screen center">
+    <p class="eyebrow">Somewhere above the clouds</p>
+    <h1>The Door to Heaven</h1>
+    ${door()}
+    <div class="quiz" id="quiz">
+      <p class="script">It only opens for one person, ${name}. Answer this to open it.</p>
+      <p class="sum">1 + 1 = ?</p>
+      <div class="answers">${[3, 2, 11, 1].map(n => `<button class="ans" data-n="${n}">${n}</button>`).join("")}</div>
+      <p class="hint" id="hint" aria-live="polite"></p>
+    </div>
+  </section>`;
+  const nope = ["Hmm, no 😄", "Close… not really", "Try again, genius"];
+  let k = 0;
+  app.querySelectorAll(".ans").forEach(btn => btn.onclick = () => {
+    if (btn.dataset.n !== "2") {
+      btn.classList.remove("shake"); void btn.offsetWidth; btn.classList.add("shake"); buzz(60);
+      document.getElementById("hint").textContent = nope[k++ % nope.length];
+      return;
+    }
+    buzz(20); openDoor();
+  });
+}
+
+// ---------- The door opens ----------
+function openDoor() {
+  const quiz = document.getElementById("quiz");
+  quiz.innerHTML = `<p class="inscr" id="ins">Correct. Opening…</p>`;
+  const gate = document.getElementById("gate");
+  gate.scrollIntoView({ behavior: "smooth", block: "center" });
+  setTimeout(() => {
+    gate.classList.add("open"); buzz([60, 80, 120]);
+    setTimeout(() => { const b = gate.getBoundingClientRect(); sparkle(b.left + b.width / 2, b.top + b.height / 2, 160); }, 700);
+    setTimeout(reveal, 2300);
+  }, 600);
+}
+
+function reveal() {
+  const s = document.querySelector(".screen");
+  document.getElementById("ins").remove();
+  s.insertAdjacentHTML("beforeend", `<div class="reveal" id="rv">
+    <p class="big" style="animation-delay:0s">Welcome to heaven.</p>
+    <p class="lead" style="animation-delay:.8s">Population: you.</p>
+    <p class="script" style="animation-delay:1.8s">But this heaven has one rule, ${name}…</p>
+  </div>`);
+  setTimeout(theRule, 4200);
+}
+
+function theRule() {
+  app.innerHTML = `<section class="screen center">
+    <p class="eyebrow">The one rule of heaven</p>
+    <p class="big">Heaven has a dress code.</p>
+    <p class="script" style="font-size:28px">A saree. Strictly.</p>
+    <p class="lead">And the gatekeeper (that's me) needs proof before you can stay. A few pictures of you in a saree. The ones you think are too much. They're not.</p>
+    <p class="script">Kalstya?</p>
+    <div class="ask" id="ask">
+      <button id="yesBtn" style="position:absolute;left:0;top:24px">Yes, sending 🙈</button>
+      <button id="noBtn" style="left:62%;top:24px">No</button>
+    </div>
+  </section>`;
+  const no = document.getElementById("noBtn"), ask = document.getElementById("ask");
+  const lines = ["Sure-a?", "Innond sala yochne maadu", "Heaven says no to no", "Nope, option illa", "Yes is right there"];
+  let k = 0, sc = 1;
+  const flee = e => {
+    e.preventDefault();
+    no.style.left = Math.random() * (ask.clientWidth - no.offsetWidth) + "px";
+    no.style.top = Math.random() * (ask.clientHeight - no.offsetHeight) + "px";
+    no.textContent = lines[k++ % lines.length]; sc = Math.max(.55, sc - .08); no.style.scale = sc; buzz(8);
+  };
+  no.addEventListener("pointerdown", flee); no.addEventListener("click", flee);
+  document.getElementById("yesBtn").onclick = yes;
+}
+
+function yes() {
+  buzz([40, 60, 40, 60, 100]); sparkle(innerWidth / 2, innerHeight / 3, 220);
+  const msg = encodeURIComponent(`Okay gatekeeper ${FROM} 🙈 Here's my proof for heaven.`);
+  app.innerHTML = `<section class="screen center">
+    <p class="eyebrow">Entry approved, pending proof</p>
+    <p class="big">Best answer.</p>
+    <p class="lead">Tap below, attach your saree pictures, and hit send. The message is already written for you.</p>
+    <div class="row"><a class="btn" href="https://wa.me/${MY_WHATSAPP}?text=${msg}" target="_blank" rel="noopener">Send the proof on WhatsApp</a></div>
+    <p>The gatekeeper is waiting, ${name}. Patiently. Mostly.</p>
+  </section>`;
+}
+
+// ---------- starry sky + gold sparkles ----------
+const sky = document.getElementById("sky"), sx = sky.getContext("2d");
+const fx = document.getElementById("fx"), fc = fx.getContext("2d");
+let stars = [], parts = [], running = false;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function size() {
+  const d = devicePixelRatio;
+  [sky, fx].forEach(c => { c.width = innerWidth * d; c.height = innerHeight * d; });
+  stars = Array.from({ length: 120 }, () => ({ x: Math.random() * sky.width, y: Math.random() * sky.height, r: (Math.random() * 1.3 + .3) * d, p: Math.random() * 6 }));
+}
+addEventListener("resize", size); size();
+function drawSky(t) {
+  sx.clearRect(0, 0, sky.width, sky.height);
+  for (const s of stars) {
+    sx.globalAlpha = reduce ? .7 : .35 + .65 * Math.abs(Math.sin(t / 1400 + s.p));
+    sx.beginPath(); sx.arc(s.x, s.y, s.r, 0, 7); sx.fillStyle = "#fff3cf"; sx.fill();
+  }
+  sx.globalAlpha = 1;
+  if (!reduce) requestAnimationFrame(drawSky);
+}
+requestAnimationFrame(drawSky);
+function sparkle(x, y, n) {
+  if (reduce) return;
+  const d = devicePixelRatio;
+  for (let i = 0; i < n; i++) {
+    const a = Math.random() * 7, v = (2 + Math.random() * 6) * d;
+    parts.push({ x: x * d, y: y * d, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 2 * d, life: 1, r: (1.5 + Math.random() * 3) * d, white: Math.random() < .4 });
+  }
+  if (!running) { running = true; requestAnimationFrame(tick); }
+}
+function tick() {
+  fc.clearRect(0, 0, fx.width, fx.height);
+  parts = parts.filter(p => p.life > 0);
+  for (const p of parts) {
+    p.x += p.vx; p.y += p.vy; p.vy += .12 * devicePixelRatio; p.vx *= .98; p.life -= .012;
+    fc.globalAlpha = Math.max(0, p.life);
+    fc.fillStyle = p.white ? "#fff3cf" : "#e6c06a";
+    fc.beginPath(); fc.arc(p.x, p.y, p.r, 0, 7); fc.fill();
+  }
+  fc.globalAlpha = 1;
+  if (parts.length) requestAnimationFrame(tick); else { running = false; fc.clearRect(0, 0, fx.width, fx.height); }
+}
+
+intro();
+</script>
+
+</body></html>
